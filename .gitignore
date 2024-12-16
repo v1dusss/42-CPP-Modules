@@ -1,0 +1,8 @@
+*.o
+*.a
+*.out
+*.dSYM
+*.dSYM/
+obj/
+.vscode
+.DS_Store
