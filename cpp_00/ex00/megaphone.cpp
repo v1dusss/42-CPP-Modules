@@ -3,7 +3,7 @@
 
 int main(int argc, char **argv) {
 	if (argc == 1) {
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\033[0m" << std::endl;
+		std::cout << "\033[31m* LOUD AND UNBEARABLE FEEDBACK NOISE *\033[0m" << std::endl;
 	} else {
 		for (int i = 1; i < argc; i++) {
 			for (int j = 0; argv[i][j] != '\0'; j++) {
