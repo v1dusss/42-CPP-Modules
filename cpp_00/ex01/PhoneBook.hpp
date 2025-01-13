@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Contact.hpp"
 
 #pragma once
@@ -10,6 +11,7 @@ class PhoneBook
 {
 private:
 	Contact contacts[PHONEBOOK_SIZE];
+	void print_contact_detail(std::string str);
 public:
 	PhoneBook();
 	~PhoneBook();

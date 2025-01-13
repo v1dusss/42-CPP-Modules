@@ -85,6 +85,13 @@ void PhoneBook::add_contact(int index)
 	contacts[index].set_darkest_secret(input);
 }
 
+void PhoneBook::print_contact_detail(std::string str)
+{
+	if (str.length() > 10)
+		str =  str.substr(0, 9) + ".";
+	std::cout << std::setw(10) << std::right << str << "|";
+}
+
 void PhoneBook::search_contact()
 {
 	std::string input;
@@ -98,15 +105,17 @@ void PhoneBook::search_contact()
 		else if (!is_numeric(input)) {
 			std::cout << "Invalid input. Please use numerical digits only.\n";
 		}
-		else if (std::stoi(input) <= 0 || std::stoi(input) >= PHONEBOOK_SIZE) {
+		else if (std::stoi(input) <= 0 || std::stoi(input) > PHONEBOOK_SIZE) {
 			std::cout << "Invalid index. Please enter a number between 1 and " << PHONEBOOK_SIZE << ".\n";
 		}
-	} while (!is_numeric(input) || input.empty() || std::stoi(input) <= 0 || std::stoi(input) >= PHONEBOOK_SIZE);
+	} while (!is_numeric(input) || input.empty() || std::stoi(input) <= 0 || std::stoi(input) > PHONEBOOK_SIZE);
 	int index = std::stoi(input) - 1;
 
-	std::cout << "First name: " << contacts[index].get_first_name() << std::endl;
-	std::cout << "Last name: " << contacts[index].get_last_name() << std::endl;
-	std::cout << "Nickname: " << contacts[index].get_nickname() << std::endl;
-	std::cout << "Phone number: " << contacts[index].get_phone_number() << std::endl;
-	std::cout << "Darkest secret: " << contacts[index].get_darkest_secret() << std::endl;
+	std::cout << "     Index|First name| Last name|  Nickname|" << std::endl;
+
+	std::cout << std::setw(10) << std::right << index + 1 << "|";
+	print_contact_detail(contacts[index].get_first_name());
+	print_contact_detail(contacts[index].get_last_name());
+	print_contact_detail( contacts[index].get_nickname());
+	std::cout << std::endl;
 }
