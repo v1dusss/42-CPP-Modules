@@ -87,20 +87,23 @@ void PhoneBook::add_contact(int index)
 
 void PhoneBook::search_contact()
 {
-	std::cout << "Index: ";
 	std::string input;
-	std::getline(std::cin, input);
-	if (input.empty())
-	{
-		std::cout << "Invalid index" << std::endl;
-		return;
-	}
-	int index = std::stoi(input);
-	if (index < 0 || index >= PHONEBOOK_SIZE)
-	{
-		std::cout << "Invalid index" << std::endl;
-		return;
-	}
+	do {
+		std::cout << "Enter the index of the contact: ";
+		std::getline(std::cin, input);
+		if (input.empty())
+		{
+			std::cout << "Input cannot be empty" << std::endl;
+		}
+		else if (!is_numeric(input)) {
+			std::cout << "Invalid input. Please use numerical digits only.\n";
+		}
+		else if (std::stoi(input) <= 0 || std::stoi(input) >= PHONEBOOK_SIZE) {
+			std::cout << "Invalid index. Please enter a number between 1 and " << PHONEBOOK_SIZE << ".\n";
+		}
+	} while (!is_numeric(input) || input.empty() || std::stoi(input) <= 0 || std::stoi(input) >= PHONEBOOK_SIZE);
+	int index = std::stoi(input) - 1;
+
 	std::cout << "First name: " << contacts[index].get_first_name() << std::endl;
 	std::cout << "Last name: " << contacts[index].get_last_name() << std::endl;
 	std::cout << "Nickname: " << contacts[index].get_nickname() << std::endl;
