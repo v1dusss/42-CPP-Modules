@@ -1,11 +1,13 @@
-NAME        :=      megaphone
+NAME        :=      phonebook
 
 CXX         :=      c++
-CXXFLAGS    :=      -Wall -Wextra -Werror -std=c++98
+CXXFLAGS    :=      -Wall -Wextra -Werror -std=c++17
 
 OBJDIR      :=      obj
 
-SRC         :=      megaphone.cpp
+SRC         :=      main.cpp \
+					Contact.cpp \
+					PhoneBook.cpp
 OBJ         :=      $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 all: $(NAME)
