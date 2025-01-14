@@ -6,7 +6,6 @@ class Zombie
 {
 private:
 	std::string name;
-	int number;
 public:
 	Zombie();
 	~Zombie();
