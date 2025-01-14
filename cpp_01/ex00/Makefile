@@ -6,7 +6,9 @@ CXXFLAGS    :=      -Wall -Wextra -Werror -std=c++17
 OBJDIR      :=      obj
 
 SRC         :=      main.cpp \
-					Zombie.cpp 
+					Zombie.cpp \
+					newZombie.cpp \
+					randomChump.cpp
 OBJ         :=      $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 all: $(NAME)
