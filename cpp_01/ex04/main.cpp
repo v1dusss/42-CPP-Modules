@@ -25,6 +25,20 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	std::string line;
+	while (std::getline(infile, line))
+	{
+		std::string new_line;
+		while (line.find(s1) != std::string::npos)
+		{
+			new_line += line.substr(0, line.find(s1));
+			new_line += s2;
+			line = line.substr(line.find(s1) + s1.length());
+		}
+		new_line += line;
+		outfile << new_line << std::endl;
+	}
+
 	infile.close();
 	outfile.close();
 
