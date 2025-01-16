@@ -1,7 +1,5 @@
 #include <iostream>
 
-#pragma once
-
 int main( void )
 {
 	std::string str = "HI THIS IS BRAIN";
