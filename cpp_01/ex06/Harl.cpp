@@ -48,6 +48,11 @@ void Harl::complain(std::string level)
 		if (level == arr[i])
 			break;
 	}
+	if (i == 4){
+		std::cerr << "[ Probably complaining about insignificant problems ]/n";
+		return;
+	}
+
 	switch (i) {
 		case 0:
 			(this->*functions[0])();
