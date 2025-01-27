@@ -2,28 +2,23 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int value)
 {
-	std::cout << "Int constructor called" << std::endl;
 	fixedPointValue = value << fractionalBits;
 }
 Fixed::Fixed(const float value) : fixedPointValue(roundf(value * (1 << fractionalBits)))
 {
-	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &fixed)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	this->fixedPointValue = fixed.fixedPointValue;
 }
 
 Fixed& Fixed::operator=(const Fixed &fixed)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if(this != &fixed)
 		this->fixedPointValue = fixed.getRawBits();
 	return (*this);
@@ -31,12 +26,10 @@ Fixed& Fixed::operator=(const Fixed &fixed)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (this->fixedPointValue);
 }
 
@@ -55,80 +48,86 @@ int Fixed::toInt(void) const
 	return (fixedPointValue >> fractionalBits);
 }
 
-bool Fixed::operator>(Fixed &other)
+bool Fixed::operator>(const Fixed &other) const
 {
 	if (this->fixedPointValue > other.getRawBits())
 		return (true);
 	return (false);
 }
 
-bool Fixed::operator<(Fixed &other)
+bool Fixed::operator<(const Fixed &other) const
 {
 	if (this->fixedPointValue < other.getRawBits())
 		return (true);
 	return (false);
 }
 
-bool Fixed::operator<=(Fixed &other)
+bool Fixed::operator<=(const Fixed &other) const
 {
 	if (this->fixedPointValue <= other.getRawBits())
 		return (true);
 	return (false);
 }
 
-bool Fixed::operator>=(Fixed &other)
+bool Fixed::operator>=(const Fixed &other) const
 {
 	if (this->fixedPointValue >= other.getRawBits())
 		return (true);
 	return (false);
 }
 
-bool Fixed::operator==(Fixed &other)
+bool Fixed::operator==(const Fixed &other) const
 {
 	if (this->fixedPointValue == other.getRawBits())
 		return (true);
 	return (false);
 }
 
-bool Fixed::operator!=(Fixed &other)
+bool Fixed::operator!=(const Fixed &other) const
 {
 	if (this->fixedPointValue != other.getRawBits())
 		return (true);
 	return (false);
 }
 
-Fixed Fixed::operator+(Fixed &other)
+Fixed Fixed::operator+(const Fixed &other) const
 {
-	this->fixedPointValue += other.getRawBits();
-	return (*this);
+	Fixed result;
+	result.fixedPointValue = (this->fixedPointValue + other.fixedPointValue) >> fractionalBits;
+	return result;
 }
 
-Fixed Fixed::operator-(Fixed &other)
+Fixed Fixed::operator-(const Fixed &other) const
 {
-	this->fixedPointValue -= other.getRawBits();
-	return (*this);
+	Fixed result;
+	result.fixedPointValue = (this->fixedPointValue - other.fixedPointValue) >> fractionalBits;
+	return result;
 }
 
-Fixed Fixed::operator*(Fixed &other)
+Fixed Fixed::operator*(const Fixed &other) const
 {
-	this->fixedPointValue *= other.getRawBits();
-	return (*this);
+	Fixed result;
+	result.fixedPointValue = (this->fixedPointValue * other.fixedPointValue) >> fractionalBits;
+	return result;
 }
 
-Fixed Fixed::operator/(Fixed &other)
+Fixed Fixed::operator/(const Fixed &other) const
 {
-	this->fixedPointValue /= other.getRawBits();
-	return (*this);
+	Fixed result;
+	result.fixedPointValue = (this->fixedPointValue / other.fixedPointValue) >> fractionalBits;
+	return result;
 }
 
 Fixed& Fixed::operator--()
 {
 	this->fixedPointValue--;
+	return (*this);
 }
 
 Fixed& Fixed::operator++()
 {
 	this->fixedPointValue++;
+	return (*this);
 }
 
 Fixed Fixed::operator--(int)
@@ -145,3 +144,8 @@ Fixed Fixed::operator++(int)
 	return (tmp);
 }
 
+std::ostream & operator<<(std::ostream & o, Fixed const & i)
+{
+	o << i.toFloat();
+	return (o);
+}

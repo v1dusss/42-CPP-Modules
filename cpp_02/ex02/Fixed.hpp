@@ -21,16 +21,16 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 
-	bool operator>(Fixed &other);
-	bool operator<(Fixed &other);
-	bool operator<=(Fixed &other);
-	bool operator>=(Fixed &other);
-	bool operator==(Fixed &other);
-	bool operator!=(Fixed &other);
-	Fixed operator+(Fixed &other);
-	Fixed operator-(Fixed &other);
-	Fixed operator*(Fixed &other);
-	Fixed operator/(Fixed &other);
+	bool operator>(const Fixed &other) const;
+	bool operator<(const Fixed &other) const;
+	bool operator<=(const Fixed &other) const;
+	bool operator>=(const Fixed &other) const;
+	bool operator==(const Fixed &other) const;
+	bool operator!=(const Fixed &other) const;
+	Fixed operator+(const Fixed &other) const;
+	Fixed operator-(const Fixed &other) const;
+	Fixed operator*(const Fixed &other) const;
+	Fixed operator/(const Fixed &other) const;
 	Fixed &operator++();
 	Fixed &operator--();
 	Fixed operator++(int);
