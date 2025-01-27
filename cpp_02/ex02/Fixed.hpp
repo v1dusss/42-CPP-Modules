@@ -20,6 +20,22 @@ public:
 	void setRawBits(int const raw);
 	float toFloat(void) const;
 	int toInt(void) const;
+
+	bool operator>(Fixed &other);
+	bool operator<(Fixed &other);
+	bool operator<=(Fixed &other);
+	bool operator>=(Fixed &other);
+	bool operator==(Fixed &other);
+	bool operator!=(Fixed &other);
+	Fixed operator+(Fixed &other);
+	Fixed operator-(Fixed &other);
+	Fixed operator*(Fixed &other);
+	Fixed operator/(Fixed &other);
+	Fixed &operator++();
+	Fixed &operator--();
+	Fixed operator++(int);
+	Fixed operator--(int);
+
 };
 
 std::ostream & operator<<(std::ostream & o, Fixed const & i);

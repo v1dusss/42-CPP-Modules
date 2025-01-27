@@ -55,8 +55,93 @@ int Fixed::toInt(void) const
 	return (fixedPointValue >> fractionalBits);
 }
 
-std::ostream & operator<<(std::ostream & o, Fixed const & i)
+bool Fixed::operator>(Fixed &other)
 {
-	o << i.toFloat();
-	return (o);
+	if (this->fixedPointValue > other.getRawBits())
+		return (true);
+	return (false);
 }
+
+bool Fixed::operator<(Fixed &other)
+{
+	if (this->fixedPointValue < other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator<=(Fixed &other)
+{
+	if (this->fixedPointValue <= other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator>=(Fixed &other)
+{
+	if (this->fixedPointValue >= other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator==(Fixed &other)
+{
+	if (this->fixedPointValue == other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator!=(Fixed &other)
+{
+	if (this->fixedPointValue != other.getRawBits())
+		return (true);
+	return (false);
+}
+
+Fixed Fixed::operator+(Fixed &other)
+{
+	this->fixedPointValue += other.getRawBits();
+	return (*this);
+}
+
+Fixed Fixed::operator-(Fixed &other)
+{
+	this->fixedPointValue -= other.getRawBits();
+	return (*this);
+}
+
+Fixed Fixed::operator*(Fixed &other)
+{
+	this->fixedPointValue *= other.getRawBits();
+	return (*this);
+}
+
+Fixed Fixed::operator/(Fixed &other)
+{
+	this->fixedPointValue /= other.getRawBits();
+	return (*this);
+}
+
+Fixed& Fixed::operator--()
+{
+	this->fixedPointValue--;
+}
+
+Fixed& Fixed::operator++()
+{
+	this->fixedPointValue++;
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	this->fixedPointValue--;
+	return (tmp);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp(*this);
+	this->fixedPointValue++;
+	return (tmp);
+}
+
