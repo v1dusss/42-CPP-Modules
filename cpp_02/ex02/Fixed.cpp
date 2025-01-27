@@ -137,6 +137,26 @@ Fixed Fixed::operator--(int)
 	return (tmp);
 }
 
+Fixed& Fixed::min(Fixed &value_1, Fixed &value_2)
+{
+	return (value_1 < value_2 ? value_1 : value_2);
+}
+
+const Fixed& Fixed::min(Fixed const &value_1, Fixed const &value_2)
+{
+	return (value_1 < value_2 ? value_1 : value_2);
+}
+
+Fixed& Fixed::max(Fixed &value_1, Fixed &value_2)
+{
+	return (value_1 > value_2 ? value_1 : value_2);
+}
+
+const Fixed& Fixed::max(Fixed const &value_1, Fixed const &value_2)
+{
+	return (value_1 > value_2 ? value_1 : value_2);
+}
+
 Fixed Fixed::operator++(int)
 {
 	Fixed tmp(*this);
