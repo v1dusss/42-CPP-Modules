@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 #pragma once
 
@@ -20,3 +21,5 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 };
+
+std::ostream & operator<<(std::ostream & o, Fixed const & i);
