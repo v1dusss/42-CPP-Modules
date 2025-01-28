@@ -1,21 +1,26 @@
 #include "Fixed.hpp"
+#include "Point.hpp"
 #include <iostream>
 
 int main( void )
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Point a( Fixed( 0 ), Fixed( 0 ) );
+	Point b( Fixed( 0 ), Fixed( 4 ) );
+	Point c( Fixed( 4 ), Fixed( 0 ) );
+	Point point( Fixed( 2 ), Fixed( 1 ) );
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
+	std::cout << "Point a: " << a.getX() << ", " << a.getY() << std::endl;
+	std::cout << "Point b: " << b.getX() << ", " << b.getY() << std::endl;
+	std::cout << "Point c: " << c.getX() << ", " << c.getY() << std::endl;
 
-	std::cout << b << std::endl;
+	std::cout << "Point point: " << point.getX() << ", " << point.getY() << std::endl;
 
-	std::cout <<"max: " << Fixed::max( a, b ) << std::endl;
-	std::cout <<"min: " << Fixed::min( a, b ) << std::endl;
+	bool result = bsp( a, b, c, point );
+
+	if (result == true)
+		std::cout << "Point is inside the triangle" << std::endl;
+	else
+		std::cout << "Point is outside the triangle" << std::endl;
 
 	return 0;
 }
