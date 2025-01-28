@@ -6,7 +6,9 @@ CXXFLAGS    :=      -Wall -Wextra -Werror -std=c++17
 OBJDIR      :=      obj
 
 SRC         :=      main.cpp \
-					Fixed.cpp
+					Fixed.cpp \
+					Point.cpp \
+					bsp.cpp
 OBJ         :=      $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 all: $(NAME)
