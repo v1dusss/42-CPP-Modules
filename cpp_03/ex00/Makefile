@@ -1,4 +1,4 @@
-NAME        :=      ex01
+NAME        :=      ex00
 
 CXX         :=      c++
 CXXFLAGS    :=      -Wall -Wextra -Werror -std=c++17
@@ -6,9 +6,7 @@ CXXFLAGS    :=      -Wall -Wextra -Werror -std=c++17
 OBJDIR      :=      obj
 
 SRC         :=      main.cpp \
-					Fixed.cpp \
-					Point.cpp \
-					bsp.cpp
+					ClapTrap.cpp
 OBJ         :=      $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 all: $(NAME)
