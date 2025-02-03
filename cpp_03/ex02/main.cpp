@@ -1,14 +1,16 @@
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-	ScavTrap scavTrap("ScavTrap_1");
-	ScavTrap scavTrap2("ScavTrap_2");
-	ScavTrap scavTrap3("ScavTrap_3");
+	ScavTrap scav("ScavTrap");
+	FragTrap frag("FragTrap");
 
-	scavTrap.attack("ScavTrap_2");
-	scavTrap2.takeDamage(20);
-	scavTrap.guardGate();
-	scavTrap3.attack("ScavTrap_2");
+	scav.attack("FragTrap");
+	frag.takeDamage(20);
+	frag.attack("ScavTrap");
+	scav.takeDamage(20);
+	scav.guardGate();
+	frag.highFivesGuys();
 	return 0;
 }

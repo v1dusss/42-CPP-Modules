@@ -16,12 +16,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	std::cout << "FragTrap_" << _name << " has been spawned!" << std::endl;
 }
 
-FragTrap::~FragTrap() : ClapTrap()
+FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap_" << _name << " has been destroyed!" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &copy)
+FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 {
 	std::cout << "copy constructor called: FragTrap" << std::endl;
 }
@@ -39,7 +39,7 @@ FragTrap& FragTrap::operator=(const FragTrap &copy)
 	return *this;
 }
 
-void FragTrap::vaulthunter_dot_exe(std::string const & target)
+void FragTrap::highFivesGuys()
 {
 	std::cout << "High-Five! " << std::endl;
 }

@@ -9,5 +9,5 @@ public:
 	FragTrap(const FragTrap &copy);
 	FragTrap &operator=(const FragTrap &copy);
 
-	void vaulthunter_dot_exe(std::string const & target);
+	void highFivesGuys();
 };
