@@ -6,7 +6,7 @@ ClapTrap::ClapTrap()
 	this->_hitpoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
-	std::cout << "ClapTrap_" << this->_name << " has been spawned!" << std::endl;
+	// std::cout << "ClapTrap_" << this->_name << " has been spawned!" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -15,7 +15,7 @@ ClapTrap::ClapTrap(std::string name)
 	this->_hitpoints = 10;
 	this->_energyPoints = 10;
 	this->_attackDamage = 0;
-	std::cout << "ClapTrap_" << this->_name << " has been spawned!" << std::endl;
+	// std::cout << "ClapTrap_" << this->_name << " has been spawned!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)

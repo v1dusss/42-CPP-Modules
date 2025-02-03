@@ -1,10 +1,10 @@
-#include <iostream>
-
 #pragma once
+
+#include <iostream>
 
 class ClapTrap
 {
-private:
+protected:
 	std::string _name;
 	int _hitpoints;
 	int _energyPoints;
