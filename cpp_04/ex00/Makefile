@@ -1,4 +1,4 @@
-NAME        :=      ex02
+NAME        :=      ex00
 
 CXX         :=      c++
 CXXFLAGS    :=      -Wall -Wextra -Werror -std=c++17
@@ -9,6 +9,9 @@ OBJDIR      :=      obj
 VPATH       :=      src
 
 SRC         :=      main.cpp \
+					Animal.cpp \
+					Dog.cpp \
+					Cat.cpp \
 
 OBJ         :=      $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
