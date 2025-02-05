@@ -23,3 +23,8 @@ Animal& Animal::operator=(const Animal &assign)
 	this->type = assign.type;
 	return *this;
 }
+
+void Animal::makeSound() const
+{
+	std::cout << "Animal sound" << std::endl;
+}

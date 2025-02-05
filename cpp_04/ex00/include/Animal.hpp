@@ -13,4 +13,6 @@ public:
 	Animal(const Animal &copy);
 	virtual ~Animal();
 	Animal &operator=(const Animal &assign);
+
+	virtual void makeSound() const;
 };
