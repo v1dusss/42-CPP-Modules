@@ -11,7 +11,9 @@ class PhoneBook
 {
 private:
 	Contact contacts[PHONEBOOK_SIZE];
-	void print_contact_detail(std::string str);
+	void print_contact_tabel();
+	void print_one_cell(std::string str);
+
 public:
 	PhoneBook();
 	~PhoneBook();
