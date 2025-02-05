@@ -122,7 +122,7 @@ void PhoneBook::search_contact()
 		else if (!is_numeric(input)) {
 			std::cout << YELLOW<< "Invalid input. Please use numerical digits only." << RESET << std::endl;
 		}
-		else if (std::stoi(input) <= 0 || std::stoi(input) > PHONEBOOK_SIZE) {
+		else if (std::stoi(input) <= 0 || std::stoi(input) > PHONEBOOK_SIZE || input.length() != 1) {
 				std::cout << YELLOW << "Invalid index. Please enter a number between 1 and " << PHONEBOOK_SIZE << RESET << std::endl;
 		}
 		else if  (contacts[std::stoi(input) - 1].get_first_name().empty()) {
