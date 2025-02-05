@@ -107,10 +107,11 @@ void PhoneBook::print_contact_tabel()
 
 void PhoneBook::search_contact()
 {
+	std::cout << std::endl;
 	this->print_contact_tabel();
 	std::string input;
 	do {
-		std::cout << "Enter the index of the contact: ";
+		std::cout << std::endl << "Enter the index of the contact: ";
 		std::getline(std::cin, input);
 		if (input.empty())
 		{
@@ -123,6 +124,13 @@ void PhoneBook::search_contact()
 			std::cout << "Invalid index. Please enter a number between 1 and " << PHONEBOOK_SIZE << ".\n";
 		}
 	} while (!is_numeric(input) || input.empty() || std::stoi(input) <= 0 || std::stoi(input) > PHONEBOOK_SIZE);
-	//int index = std::stoi(input) - 1;
 
+	int index = std::stoi(input) - 1;
+	std::cout << std::endl;
+	std::cout << std::setw(15) << std::right << "First name" << ": " << contacts[index].get_first_name() << std::endl;
+	std::cout << std::setw(15) << std::right << "Last name" << ": " << contacts[index].get_last_name() << std::endl;
+	std::cout << std::setw(15) << std::right << "Nickname" << ": " << contacts[index].get_nickname() << std::endl;
+	std::cout << std::setw(15) << std::right << "Phone number" << ": " << contacts[index].get_phone_number() << std::endl;
+	std::cout << std::setw(15) << std::right << "Darkest secret" << ": " << contacts[index].get_darkest_secret() << std::endl;
+	std::cout << std::endl;
 }
