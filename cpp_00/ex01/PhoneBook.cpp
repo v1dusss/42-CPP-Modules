@@ -31,6 +31,7 @@ bool is_numeric(const std::string& str) {
 void PhoneBook::add_contact(int index)
 {
 	std::string input;
+	std::cout << std::endl;
 
 	// First name
 	do {
@@ -38,10 +39,10 @@ void PhoneBook::add_contact(int index)
 		std::getline(std::cin, input);
 		if (input.empty())
 		{
-			std::cout << "Input cannot be empty" << std::endl;
+			std::cout << YELLOW << "Input cannot be empty" << RESET << std::endl;
 		}
 		else if (!is_alpha(input)) {
-			std::cout << "Invalid input. Please use alphabetical letters only.\n";
+			std::cout << YELLOW << "Invalid input. Please use alphabetical letters only." << RESET << std::endl;
 		}
 	} while (!is_alpha(input) || input.empty());
 	contacts[index].set_first_name(input);
@@ -52,10 +53,10 @@ void PhoneBook::add_contact(int index)
 		std::getline(std::cin, input);
 		if (input.empty())
 		{
-			std::cout << "Input cannot be empty" << std::endl;
+			std::cout << YELLOW << "Input cannot be empty" << RESET << std::endl;
 		}
 		else if (!is_alpha(input)) {
-			std::cout << "Invalid input. Please use alphabetical letters only.\n";
+			std::cout << YELLOW << "Invalid input. Please use alphabetical letters only." << RESET << std::endl;
 		}
 	} while (!is_alpha(input) || input.empty());
 	contacts[index].set_last_name(input);
@@ -71,10 +72,10 @@ void PhoneBook::add_contact(int index)
 		std::getline(std::cin, input);
 		if (input.empty())
 		{
-			std::cout << "Input cannot be empty" << std::endl;
+			std::cout << YELLOW << "Input cannot be empty" << RESET << std::endl;
 		}
 		else if (!is_numeric(input)) {
-			std::cout << "Invalid input. Please use numerical digits only.\n";
+			std::cout << YELLOW << "Invalid input. Please use numerical digits only." << RESET << std::endl;
 		}
 	} while (!is_numeric(input) || input.empty());
 	contacts[index].set_phone_number(input);
@@ -83,6 +84,8 @@ void PhoneBook::add_contact(int index)
 	std::cout << "Darkest secret: ";
 	std::getline(std::cin, input);
 	contacts[index].set_darkest_secret(input);
+
+	std::cout << GREEN << "Contact added successfully!" << RESET << std::endl << std::endl;
 }
 
 void PhoneBook::print_one_cell(std::string str)
@@ -101,7 +104,7 @@ void PhoneBook::print_contact_tabel()
 		print_one_cell(contacts[i].get_first_name());
 		print_one_cell(contacts[i].get_last_name());
 		print_one_cell(contacts[i].get_nickname());
-		std::cout << std::endl;
+		std::cout << std::endl << std::endl;
 	}
 }
 
@@ -111,19 +114,21 @@ void PhoneBook::search_contact()
 	this->print_contact_tabel();
 	std::string input;
 	do {
-		std::cout << std::endl << "Enter the index of the contact: ";
+		std::cout << "Enter the index of the contact: ";
 		std::getline(std::cin, input);
-		if (input.empty())
-		{
-			std::cout << "Input cannot be empty" << std::endl;
+		if (input.empty()) {
+			std::cout << YELLOW << "Input cannot be empty" << RESET << std::endl;
 		}
 		else if (!is_numeric(input)) {
-			std::cout << "Invalid input. Please use numerical digits only.\n";
+			std::cout << YELLOW<< "Invalid input. Please use numerical digits only." << RESET << std::endl;
 		}
 		else if (std::stoi(input) <= 0 || std::stoi(input) > PHONEBOOK_SIZE) {
-			std::cout << "Invalid index. Please enter a number between 1 and " << PHONEBOOK_SIZE << ".\n";
+				std::cout << YELLOW << "Invalid index. Please enter a number between 1 and " << PHONEBOOK_SIZE << RESET << std::endl;
 		}
-	} while (!is_numeric(input) || input.empty() || std::stoi(input) <= 0 || std::stoi(input) > PHONEBOOK_SIZE);
+		else if  (contacts[std::stoi(input) - 1].get_first_name().empty()) {
+			std::cout << YELLOW << "Contact not found. Please enter a valid index." << RESET << std::endl;
+		}
+	} while (!is_numeric(input) || input.empty() || std::stoi(input) <= 0 || std::stoi(input) > PHONEBOOK_SIZE || contacts[std::stoi(input) - 1].get_first_name().empty());
 
 	int index = std::stoi(input) - 1;
 	std::cout << std::endl;

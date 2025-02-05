@@ -4,6 +4,14 @@
 
 #pragma once
 
+// ANSI escape codes for color
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define RESET "\033[0m"
+#define BOLD "\033[1m"
+#define UNDERLINE "\033[4m"
+
 #ifndef PHONEBOOK_SIZE
 #define PHONEBOOK_SIZE 8
 #endif
