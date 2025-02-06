@@ -29,3 +29,5 @@ public:
 	void add_contact(int index);
 	void search_contact();
 };
+
+std::string get_input(std::string prompt);

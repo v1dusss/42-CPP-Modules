@@ -13,9 +13,9 @@ int main()
 	while(true)
 	{
 		std::cout << "Enter a command: " << BOLD;
-		std::getline(std::cin, command);
-		std::cout << RESET;
+		command = get_input(command);
 
+		std::cout << RESET;
 		if (command == "ADD") {
 			phonebook.add_contact(index);
 			index = (index + 1) % PHONEBOOK_SIZE;
