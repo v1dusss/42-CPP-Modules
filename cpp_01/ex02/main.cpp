@@ -10,6 +10,8 @@ int main( void )
 	std::cout << "Address of the string using pointer: " << ptr << std::endl;
 	std::cout << "Address of the string using reference: " << &ref << std::endl;
 
+	std::cout << std::endl;
+
 	std::cout << "String using pointer: " << *ptr << std::endl;
 	std::cout << "String using reference: " << ref << std::endl;
 	std::cout << "String using string: " << str << std::endl;
