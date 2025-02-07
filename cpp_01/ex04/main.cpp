@@ -5,7 +5,12 @@
 int main(int argc, char* argv[])
 {
 	if (argc != 4) {
-		std::cerr << "Usage: ./program <filename> <s1> <s2>" << std::endl;
+		std::cerr << "\033[33m" << "Usage: ./program <filename> <s1> <s2>" << "\033[0m" << std::endl;
+		return 1;
+	}
+	
+	if (argv[2][0] == '\0') {
+		std::cerr << "\033[31m" << "Error: s1 cannot be empty" << "\033[0m" << std::endl;
 		return 1;
 	}
 
@@ -15,13 +20,13 @@ int main(int argc, char* argv[])
 
 	std::ifstream infile(filename);
 	if (!infile) {
-		std::cerr << "Error: Cannot open file " << filename << std::endl;
+		std::cerr << "\033[31m" << "Error: Cannot open file " << filename << "\033[0m" << std::endl;
 		return 1;
 	}
 
 	std::ofstream outfile(filename + ".replace");
 	if (!outfile) {
-		std::cerr << "Error creating file" << std::endl;
+		std::cerr << "\033[31m" << "Error creating file" << "\033[0m" << std::endl;
 		return 1;
 	}
 
@@ -41,6 +46,8 @@ int main(int argc, char* argv[])
 
 	infile.close();
 	outfile.close();
+
+	std::cout << "\033[32m" << "File " << filename << " has been successfully replaced" << "\033[0m" << std::endl;
 
 	return 0;
 }
