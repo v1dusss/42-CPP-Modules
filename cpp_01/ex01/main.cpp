@@ -6,7 +6,7 @@ int main()
 	for (int i = 0; i < 5; i++)
 		horde[i].announce();
 	delete[] horde;
-	for (int i = 0; i < 5; i++)
-		horde[i].announce();
+	// for (int i = 0; i < 5; i++)
+	// 	horde[i].announce();
 	return 0;
 }
