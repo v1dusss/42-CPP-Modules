@@ -49,7 +49,7 @@ void Harl::complain(std::string level)
 			break;
 	}
 	if (i == 4){
-		std::cerr << "[ Probably complaining about insignificant problems ]/n";
+		std::cerr << "[ Probably complaining about insignificant problems ]\n";
 		return;
 	}
 
