@@ -7,7 +7,7 @@
 class Brain
 {
 private:
-	std::string ideas[100];
+	std::string ideas[MAX_IDEAS];
 
 public:
 	Brain();
