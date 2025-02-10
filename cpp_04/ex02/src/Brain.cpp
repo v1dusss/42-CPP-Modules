@@ -1,0 +1,34 @@
+#include "Brain.hpp"
+
+Brain::Brain()
+{
+}
+
+Brain::Brain(const Brain &copy)
+{
+	for (int i = 0; i < MAX_IDEAS; i++)
+		this->ideas[i] = copy.ideas[i];
+}
+
+Brain &Brain::operator=(const Brain &copy)
+{
+	if (this != &copy) {
+		for (int i = 0; i < MAX_IDEAS; i++)
+			this->ideas[i] = copy.ideas[i];
+	}
+	return *this;
+}
+
+Brain::~Brain()
+{
+}
+
+void Brain::setIdea(const std::string &idea, int index)
+{
+	this->ideas[index] = idea;
+}
+
+std::string Brain::getIdea(int index) const
+{
+	return(this->ideas[index]);
+}
