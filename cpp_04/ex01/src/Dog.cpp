@@ -2,6 +2,7 @@
 
 Dog::Dog() : Animal("Dog")
 {
+	this->brain = new Brain();
 	std::cout << "Dog constructor called" << std::endl;
 }
 
@@ -25,4 +26,14 @@ Dog& Dog::operator=(const Dog &obj)
 void Dog::makeSound() const
 {
 	std::cout << "Woof Woof" << std::endl;
+}
+
+void Dog::setBrainIdea(const std::string &idea, int index)
+{
+	this->brain->setIdea(idea, index);
+}
+
+std::string Dog::getBrainIdea(int index) const
+{
+	return this->brain->getIdea(index);
 }

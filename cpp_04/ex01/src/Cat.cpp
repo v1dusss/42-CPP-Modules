@@ -1,7 +1,8 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal("Cat")
+Cat::Cat() : Animal("Cat") 
 {
+	this->brain = new Brain();
 	std::cout << "Cat constructor called" << std::endl;
 }
 
@@ -25,4 +26,14 @@ Cat& Cat::operator=(const Cat &assign)
 void Cat::makeSound() const
 {
 	std::cout << "Meow Meow" << std::endl;
+}
+
+void Cat::setBrainIdea(const std::string &idea, int index)
+{
+	this->brain->setIdea(idea, index);
+}
+
+std::string Cat::getBrainIdea(int index) const
+{
+	return this->brain->getIdea(index);
 }
