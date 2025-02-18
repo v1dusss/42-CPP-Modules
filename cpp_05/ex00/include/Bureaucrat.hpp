@@ -17,7 +17,7 @@ public:
 	Bureaucrat &operator=(Bureaucrat const &other);
 
 	std::string const &getName() const;
-	unsigned int &getGrade() const;
+	unsigned int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
 
