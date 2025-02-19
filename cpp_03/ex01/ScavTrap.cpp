@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("ScavTrap")
+ScavTrap::ScavTrap() : ClapTrap("ScavTrap"), _guardGateMode(false)
 {
 	_hitpoints = 100;
 	_energyPoints = 1;
@@ -8,7 +8,7 @@ ScavTrap::ScavTrap() : ClapTrap("ScavTrap")
 	std::cout << "ScavTrap_" << _name << " has been spawned!" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _guardGateMode(false)
 {
 	_hitpoints = 100;
 	_energyPoints = 50;
@@ -16,7 +16,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	std::cout << "ScavTrap_" << _name << " has been spawned!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other), _guardGateMode(other._guardGateMode)
 {
 	std::cout << "copy constructor called: ScavTrap" << std::endl;
 }
@@ -30,6 +30,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 		this->_hitpoints = other._hitpoints;
 		this->_energyPoints = other._energyPoints;
 		this->_attackDamage = other._attackDamage;
+		this->_guardGateMode = other._guardGateMode;
 	}
 	return *this;
 }

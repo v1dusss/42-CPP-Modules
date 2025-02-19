@@ -3,7 +3,7 @@
 class ScavTrap : public ClapTrap
 {
 private:
-	bool _guardGateMode = false;
+	bool _guardGateMode;
 
 public:
 	ScavTrap();
