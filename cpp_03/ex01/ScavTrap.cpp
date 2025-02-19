@@ -3,7 +3,7 @@
 ScavTrap::ScavTrap() : ClapTrap("ScavTrap"), _guardGateMode(false)
 {
 	_hitpoints = 100;
-	_energyPoints = 1;
+	_energyPoints = 50;
 	_attackDamage = 20;
 	std::cout << "ScavTrap_" << _name << " has been spawned!" << std::endl;
 }
