@@ -3,7 +3,7 @@
 FragTrap::FragTrap() : ClapTrap("FragTrap")
 {
 	_hitpoints = 100;
-	_energyPoints = 100;
+	// _energyPoints = 100;
 	_attackDamage = 30;
 	std::cout << "FragTrap_" << _name << " has been spawned!" << std::endl;
 }
@@ -11,7 +11,7 @@ FragTrap::FragTrap() : ClapTrap("FragTrap")
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	_hitpoints = 100;
-	_energyPoints = 100;
+	// _energyPoints = 100;
 	_attackDamage = 30;
 	std::cout << "FragTrap_" << _name << " has been spawned!" << std::endl;
 }
