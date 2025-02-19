@@ -3,7 +3,7 @@
 ScavTrap::ScavTrap() : ClapTrap("ScavTrap")
 {
 	_hitpoints = 100;
-	_energyPoints = 50;
+	_energyPoints = 1;
 	_attackDamage = 20;
 	std::cout << "ScavTrap_" << _name << " has been spawned!" << std::endl;
 }
@@ -41,15 +41,16 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::guardGate()
 {
-	if (_energyPoints > 0)
-	{
-		std::cout << "ScavTrap_" << _name << " has entered in Gate keeper mode!" << std::endl;
+	if (_guardGateMode == true) {
+		std::cout << "ScavTrap_" << _name << " is already in gate keeper mode!" << std::endl;
+	}
+	else if (_energyPoints > 0) {
+		std::cout << "ScavTrap_" << _name << " has entered gate keeper mode!" << std::endl;
+		_guardGateMode = true;
 		_energyPoints -= 1;
 	}
-	else
-	{
+	else {
 		std::cout << "ScavTrap_" << _name << " is out of energy!" << std::endl;
-		return;
 	}
 }
 

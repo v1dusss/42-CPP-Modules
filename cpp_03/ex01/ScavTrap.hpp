@@ -2,6 +2,9 @@
 
 class ScavTrap : public ClapTrap
 {
+private:
+	bool _guardGateMode = false;
+
 public:
 	ScavTrap();
 	ScavTrap(std::string name);
