@@ -8,7 +8,8 @@ OBJDIR      :=      obj
 SRC         :=      main.cpp \
 					ClapTrap.cpp \
 					ScavTrap.cpp \
-					FragTrap.cpp
+					FragTrap.cpp \
+					DiamondTrap.cpp
 
 OBJ         :=      $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
