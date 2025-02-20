@@ -2,10 +2,12 @@
 
 Animal::Animal()
 {
+	std::cout << "Animal constructor called" << std::endl;
 }
 
 Animal::Animal(std::string type)
 {
+	std::cout << "Animal constructor called" << std::endl;
 	this->type = type;
 }
 
@@ -16,6 +18,7 @@ Animal::Animal(const Animal &copy)
 
 Animal::~Animal()
 {
+	std::cout << "Animal destroyed" << std::endl;
 }
 
 Animal& Animal::operator=(const Animal &assign)
