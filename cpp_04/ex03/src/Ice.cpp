@@ -8,7 +8,7 @@ Ice::~Ice()
 {
 }
 
-Ice::Ice(const Ice& other) : AMateria(other)
+Ice::Ice(const Ice& copy) : AMateria(copy)
 {
 }
 
