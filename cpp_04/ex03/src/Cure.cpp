@@ -4,10 +4,6 @@ Cure::Cure() : AMateria("cure")
 {
 }
 
-Cure::~Cure()
-{
-}
-
 Cure::Cure(const Cure& copy) : AMateria(copy)
 {
 }
@@ -16,6 +12,10 @@ Cure& Cure::operator=(const Cure& other)
 {
     AMateria::operator=(other);
     return *this;
+}
+
+Cure::~Cure()
+{
 }
 
 AMateria* Cure::clone() const
