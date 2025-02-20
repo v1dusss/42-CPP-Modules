@@ -1,6 +1,5 @@
 #include "Character.hpp"
 #include "AMateria.hpp"
-#include <algorithm>
 
 Character::Character(const std::string& name) : _name("default")
 {
