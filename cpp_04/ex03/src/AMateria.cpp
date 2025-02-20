@@ -1,6 +1,10 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria(const std::string& type) : _type(_type)
+AMateria::AMateria() : _type("default")
+{
+}
+
+AMateria::AMateria(const std::string& copy) : _type(copy)
 {
 }
 
@@ -20,7 +24,10 @@ AMateria& AMateria::operator=(const AMateria& other)
 	return *this;
 }
 
-const std::string& AMateria::getType() const { return _type; }
+const std::string& AMateria::getType() const
+{
+	return _type;
+}
 
 void AMateria::use(ICharacter& target)
 {

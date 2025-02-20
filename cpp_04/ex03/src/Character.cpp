@@ -1,6 +1,13 @@
 #include "Character.hpp"
 #include "AMateria.hpp"
 
+Character::Character() : _name("default")
+{
+	for (auto& materia : _materias){
+		materia = nullptr;
+	}
+}
+
 Character::Character(const std::string& name) : _name("default")
 {
 	_name = name;
@@ -58,8 +65,9 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	if (idx >= 0 && static_cast<size_t>(idx) < 4)
+	if (idx >= 0 && idx < 4 && _materias[idx])
 	{
+		delete _materias[idx];
 		_materias[idx] = nullptr;
 	}
 }

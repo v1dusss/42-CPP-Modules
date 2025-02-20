@@ -16,7 +16,11 @@ MateriaSource::MateriaSource(const MateriaSource& copy)
 
 MateriaSource::~MateriaSource()
 {
-	delete _materias;
+	for (size_t i = 0; i < 4; ++i) {
+		if (_materias[i]) {
+			delete _materias[i];
+		}
+	}
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other)
@@ -49,4 +53,5 @@ AMateria* MateriaSource::createMateria(const std::string& type)
 			return _materias[i]->clone();
 		}
 	}
+	return nullptr;
 }
