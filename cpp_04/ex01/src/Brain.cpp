@@ -6,8 +6,9 @@ Brain::Brain()
 
 Brain::Brain(const Brain &copy)
 {
-	for (int i = 0; i < MAX_IDEAS; i++)
-		this->ideas[i] = copy.ideas[i];
+	// for (int i = 0; i < MAX_IDEAS; i++)
+	// 	this->ideas[i] = copy.ideas[i];
+	*this = copy;
 }
 
 Brain &Brain::operator=(const Brain &copy)
@@ -21,6 +22,7 @@ Brain &Brain::operator=(const Brain &copy)
 
 Brain::~Brain()
 {
+	std::cout << "Brain got deleted" << std::endl;
 }
 
 void Brain::setIdea(const std::string &idea, int index)

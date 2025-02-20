@@ -3,6 +3,7 @@
 
 int main()
 {
+	Animal bob;
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -12,5 +13,9 @@ int main()
 	j->makeSound();
 	meta->makeSound();
 
+	bob.makeSound();
+	delete meta;
+	delete j;
+	delete i;
 	return 0;
 }

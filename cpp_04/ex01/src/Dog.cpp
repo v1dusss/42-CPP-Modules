@@ -8,11 +8,13 @@ Dog::Dog() : Animal("Dog")
 
 Dog::Dog(const Dog& copy) : Animal(copy)
 {
+	this->brain = new Brain(*copy.brain);
 	std::cout << "Dog copy constructor called" << std::endl;
 }
 
 Dog::~Dog()
 {
+	delete this->brain;
 	std::cout << "Dog destructor called" << std::endl;
 }
 
