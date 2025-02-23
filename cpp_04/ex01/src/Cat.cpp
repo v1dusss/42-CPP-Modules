@@ -21,9 +21,6 @@ Cat::~Cat()
 
 Cat& Cat::operator=(const Cat &assign)
 {
-	// std::cout << "Cat assignation operator called" << std::endl;
-	// this->type = assign.type;
-	// return *this;
 	if (this != &assign)
 	{
 		Animal::operator=(assign);

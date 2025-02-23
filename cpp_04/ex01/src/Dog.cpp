@@ -14,14 +14,18 @@ Dog::Dog(const Dog& copy) : Animal(copy)
 
 Dog::~Dog()
 {
-	delete this->brain;
+	if (this->brain)
+		delete this->brain;
 	std::cout << "Dog destructor called" << std::endl;
 }
 
 Dog& Dog::operator=(const Dog &obj)
 {
-	std::cout << "Dog assignation operator called" << std::endl;
-	this->type = obj.type;
+	if (this != &obj)
+	{
+		Animal::operator=(obj);
+		*brain = *obj.brain;
+	}
 	return *this;
 }
 
