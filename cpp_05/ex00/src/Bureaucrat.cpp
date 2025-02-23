@@ -2,6 +2,7 @@
 
 Bureaucrat::Bureaucrat(std::string const &name, unsigned int grade) : _name(name), _grade(grade)
 {
+	std::cout << "Bureaucrat " << name << " created, with grade " << grade << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
@@ -14,6 +15,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name), _grade(oth
 
 Bureaucrat::~Bureaucrat()
 {
+	std::cout << "Bureaucrat " << this->_name << " destroyed" << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const &other)
@@ -49,10 +51,10 @@ void Bureaucrat::decrementGrade()
 
 const char* Bureaucrat::GradeTooHighException::what() const noexcept
 {
-	return ("Grade is to high!");
+	return (RED "Grade is to high!" RESET);
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const noexcept
 {
-	return ("Grade is to low!");
+	return (RED "Grade is to low!" RESET);
 }
