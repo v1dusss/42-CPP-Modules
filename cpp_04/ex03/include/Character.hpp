@@ -10,6 +10,7 @@ private:
 	std::string _name;
 	AMateria* _materias[4];
 	
+	
 public:
 	Character();
 	Character(std::string const & name);

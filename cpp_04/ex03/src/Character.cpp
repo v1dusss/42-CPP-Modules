@@ -39,7 +39,10 @@ Character& Character::operator=(const Character& other)
 			delete materia;
 		}
 		for (size_t i = 0; i < 4; ++i){
-			_materias[i] = other._materias[i] ? other._materias[i]->clone() : nullptr;
+			if (other._materias[i])
+				_materias[i] = other._materias[i]->clone();
+			else
+				_materias[i] = nullptr;
 		}
 	}
 	return *this;
@@ -52,7 +55,7 @@ const std::string& Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	if (m)
+	if (m && m != _materias[0] && m != _materias[1] && m != _materias[2] && m != _materias[3])
 	{
 		for (auto& materia : _materias) {
 			if (!materia) {
@@ -65,9 +68,8 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	if (idx >= 0 && idx < 4 && _materias[idx])
+	if (idx >= 0 && static_cast<size_t>(idx) < 4)
 	{
-		delete _materias[idx];
 		_materias[idx] = nullptr;
 	}
 }
