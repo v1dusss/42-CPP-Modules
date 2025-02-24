@@ -10,5 +10,5 @@ public:
 	~Cat();
 	Cat &operator=(const Cat &assign);
 
-	virtual void makeSound() const;
+	void makeSound() const;
 };

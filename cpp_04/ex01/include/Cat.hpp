@@ -14,7 +14,7 @@ public:
 	~Cat();
 	Cat &operator=(const Cat &assign);
 
-	virtual void makeSound() const;
+	void makeSound() const;
 	void setBrainIdea(const std::string &idea, int index);
 	std::string getBrainIdea(int index) const;
 };
