@@ -6,8 +6,7 @@ Brain::Brain()
 
 Brain::Brain(const Brain &copy)
 {
-	for (int i = 0; i < MAX_IDEAS; i++)
-		this->ideas[i] = copy.ideas[i];
+	*this = copy;
 }
 
 Brain &Brain::operator=(const Brain &copy)

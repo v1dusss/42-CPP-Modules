@@ -13,7 +13,7 @@ WrongAnimal::WrongAnimal(std::string type)
 
 WrongAnimal::WrongAnimal(const WrongAnimal &copy)
 {
-	this->type = copy.type;
+	*this = copy;
 }
 
 WrongAnimal::~WrongAnimal()

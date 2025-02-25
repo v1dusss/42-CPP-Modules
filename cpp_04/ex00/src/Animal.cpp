@@ -12,7 +12,7 @@ Animal::Animal(std::string type) : type(type)
 
 Animal::Animal(const Animal &copy)
 {
-	this->type = copy.type; // F 
+	*this = copy;
 }
 
 Animal::~Animal()
