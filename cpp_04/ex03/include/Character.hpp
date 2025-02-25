@@ -9,7 +9,7 @@ class Character : public ICharacter
 private:
 	std::string _name;
 	AMateria* _materias[4];
-	
+	AMateria* _garbage[100];
 	
 public:
 	Character();
