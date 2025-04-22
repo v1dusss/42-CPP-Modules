@@ -19,6 +19,11 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
+	//Alice.incrementGrade();
+
+	Alice.signForm(Bob);
+
+	std::cout << std::endl;
 	std::cout << Bob << std::endl;
 	return (0);
 }
