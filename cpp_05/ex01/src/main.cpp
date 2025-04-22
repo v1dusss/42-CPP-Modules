@@ -1,47 +1,24 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
+	Form Bob("Bob", 1, 1);
+	Bureaucrat Alice("Alice", 2);
+
+	std::cout << Bob << std::endl;
+	std::cout << Alice << std::endl;
+	std::cout << std::endl;
+
 	try
 	{
-		Bureaucrat b("1", 0);
-		std::cout << b << std::endl;
+		Bob.beSigned(Alice);
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
-	}
-	try
-	{
-		Bureaucrat b("2", 151);
-		std::cout << b << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	try
-	{
-		Bureaucrat b("3", 150);
-		std::cout << b << std::endl;
-		b.incrementGrade();
-		std::cout << b << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	try
-	{
-		Bureaucrat b("4", 1);
-		std::cout << b << std::endl;
-		b.decrementGrade();
-		std::cout << b << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	std::cout << Bob << std::endl;
 	return (0);
 }

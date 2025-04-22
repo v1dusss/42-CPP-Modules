@@ -9,6 +9,7 @@ OBJDIR      :=      obj
 VPATH       :=      src
 
 SRC         :=      main.cpp \
+					Form.cpp \
 					Bureaucrat.cpp
 
 OBJ         :=      $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
