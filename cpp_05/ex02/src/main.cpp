@@ -1,29 +1,28 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
-	AForm Bob("Bob", 1, 1);
 	Bureaucrat Alice("Alice", 2);
+	ShrubberyCreationForm Tom("Tom");
 
-	std::cout << Bob << std::endl;
 	std::cout << Alice << std::endl;
+	std::cout << Tom << std::endl;
 	std::cout << std::endl;
 
+	Alice.signForm(Tom);
 	try
 	{
-		Bob.beSigned(Alice);
+		Tom.execute(Alice);
 	}
-	catch (std::exception &e)
+	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << '\n';
 	}
-
+	
 	//Alice.incrementGrade();
 
-	Alice.signForm(Bob);
-
 	std::cout << std::endl;
-	std::cout << Bob << std::endl;
 	return (0);
 }
