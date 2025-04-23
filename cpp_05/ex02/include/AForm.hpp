@@ -39,6 +39,11 @@ public:
 	public:
 		virtual const char *what() const noexcept override;
 	};
+	class FormNotSignedException : public std::exception
+	{
+	public:
+		virtual const char *what() const noexcept override;
+	};
 };
 
 std::ostream &operator<<(std::ostream &out, AForm const &aForm);
