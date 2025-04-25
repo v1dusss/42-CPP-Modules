@@ -11,6 +11,7 @@ VPATH       :=      src
 SRC         :=      main.cpp \
 					AForm.cpp \
 					ShrubberyCreationForm.cpp \
+					RobotomyRequestForm.cpp \
 					Bureaucrat.cpp
 
 OBJ         :=      $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
