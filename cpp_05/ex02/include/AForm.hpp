@@ -26,6 +26,8 @@ public:
 	unsigned int getGradeToSign() const;
 	unsigned int getGradeToExecute() const;
 
+	virtual void execute(Bureaucrat const & executor) const = 0;
+
 	void beSigned(Bureaucrat const &bureaucrat);
 
 	class GradeTooHighException : public std::exception

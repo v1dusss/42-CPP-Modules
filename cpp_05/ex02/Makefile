@@ -12,6 +12,7 @@ SRC         :=      main.cpp \
 					AForm.cpp \
 					ShrubberyCreationForm.cpp \
 					RobotomyRequestForm.cpp \
+					PresidentialPardonForm.cpp \
 					Bureaucrat.cpp
 
 OBJ         :=      $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
