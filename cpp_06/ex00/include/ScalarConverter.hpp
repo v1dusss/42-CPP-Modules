@@ -15,26 +15,23 @@ typedef enum e_type
 class ScalarConverter
 {
 private:
-	std::string	_str;
-	t_type		_type;
-	bool 		decimal;
 
-	void setType();
-	bool isChar();
-	bool isInt();
-	bool isFloat();
-	bool isDouble();
+	ScalarConverter(const std::string &str) = delete;
+	ScalarConverter(const ScalarConverter &other) = delete;
 
-	void printChar() const;
-	void printInt() const;
-	void printFloat() const;
-	void printDoubl() const;
+	static bool isChar(const std::string &str);
+	static bool isInt(const std::string &str);
+	static bool isFloat(const std::string &str);
+	static bool isDouble(const std::string &str);
+
+	static void convertToChar(const std::string &str);
+	static void convertToInt(const std::string &str);
+	static void convertToFloat(const std::string &str);
+	static void convertToDouble(const std::string &str);
 
 public:
 	ScalarConverter();
-	ScalarConverter(const std::string &str);
-	ScalarConverter(const ScalarConverter &other);
 	~ScalarConverter();
 
-	ScalarConverter &operator=(const ScalarConverter &other);
+	static void convert(const std::string &str);
 };
