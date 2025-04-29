@@ -101,24 +101,24 @@ bool ScalarConverter::isDouble(const std::string &str)
 	return dotSeen && digitSeen;
 }
 
-void ScalarConverter::convertToChar(const std::string &str)
+void ScalarConverter::convertToChar(const char &c)
 {
-	(void)str;
+	(void)c;
 }
 
-void ScalarConverter::convertToInt(const std::string &str)
+void ScalarConverter::convertToInt(const int &num)
 {
-	(void)str;
+	(void)num;
 }
 
-void ScalarConverter::convertToFloat(const std::string &str)
+void ScalarConverter::convertToFloat(const float &num)
 {
-	(void)str;
+	(void)num;
 }
 
-void ScalarConverter::convertToDouble(const std::string &str)
+void ScalarConverter::convertToDouble(const double &num)
 {
-	(void)str;
+	(void)num;
 }
 
 const char* typeToString(t_type type) {

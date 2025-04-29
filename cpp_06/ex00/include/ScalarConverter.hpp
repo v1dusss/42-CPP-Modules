@@ -24,10 +24,10 @@ private:
 	static bool isFloat(const std::string &str);
 	static bool isDouble(const std::string &str);
 
-	static void convertToChar(const std::string &str);
-	static void convertToInt(const std::string &str);
-	static void convertToFloat(const std::string &str);
-	static void convertToDouble(const std::string &str);
+	static void convertToChar(const char &c);
+	static void convertToInt(const int &num);
+	static void convertToFloat(const float &num);
+	static void convertToDouble(const double &num);
 
 public:
 	ScalarConverter();
