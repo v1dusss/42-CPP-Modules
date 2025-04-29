@@ -103,12 +103,21 @@ bool ScalarConverter::isDouble(const std::string &str)
 
 void ScalarConverter::convertToChar(const char &c)
 {
-	(void)c;
+	std::cout << "char: '" << c << "'" << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << ".0f" <<std::endl;
+	std::cout << "double: " << static_cast<double>(c) << ".0" <<std::endl;
 }
 
 void ScalarConverter::convertToInt(const int &num)
 {
-	(void)num;
+	if (std::isprint(num))
+		std::cout << "char: '" << static_cast<char>(num) << "'" << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	std::cout << "int: " << num << std::endl;
+	std::cout << "float: " << static_cast<float>(num) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(num) << ".0" << std::endl;
 }
 
 void ScalarConverter::convertToFloat(const float &num)
@@ -154,5 +163,24 @@ void ScalarConverter::convert(const std::string &str)
 		std::cerr << "Empty string" << std::endl;
 		return;
 	}
+
+	std::cout << "Input: " << str << std::endl;
 	std::cout << "Type: " << typeToString(type) << std::endl;
+	std::cout << std::endl;
+
+	switch (type)
+	{
+		case CHAR:
+			convertToChar(str[0]);
+			break;
+		case INT:
+			convertToInt(std::stoi(str));
+			break;
+		case FLOAT:
+			convertToFloat(std::stof(str));
+			break;
+		case DOUBLE:
+			convertToDouble(std::stod(str));
+			break;
+	}
 }
