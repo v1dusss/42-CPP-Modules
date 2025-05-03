@@ -112,10 +112,10 @@ void printTypeConversion(t_type type, const std::string &str)
 			std::cout << "int: " << str << std::endl;
 			break;
 		case FLOAT:
-			std::cout << "float: " << str << ".0f" << std::endl;
+			std::cout << "float: " << str << std::endl;
 			break;
 		case DOUBLE:
-			std::cout << "double: " << str << ".0" << std::endl;
+			std::cout << "double: " << str << std::endl;
 			break;
 		default:
 			std::cerr << "Unknown type" << std::endl;
@@ -124,13 +124,19 @@ void printTypeConversion(t_type type, const std::string &str)
 
 void ScalarConverter::convertToChar(const char &c)
 {
-	if (isprint(c))
+	if (std::isprint(c))
 		printTypeConversion(CHAR, std::string(1, c));
 	else
 		printTypeConversion(CHAR, "Non displayable");
 	printTypeConversion(INT, std::to_string(static_cast<int>(c)));
-	printTypeConversion(FLOAT, std::to_string(static_cast<float>(c)));
-	printTypeConversion(DOUBLE, std::to_string(static_cast<double>(c)));
+
+	std::ostringstream oss_f;
+	oss_f << static_cast<float>(c) << ".0f";
+	printTypeConversion(FLOAT, oss_f.str());
+
+	std::ostringstream oss_d;
+	oss_d << static_cast<double>(c) << ".0";
+	printTypeConversion(DOUBLE, oss_d.str());
 }
 
 void ScalarConverter::convertToInt(const int &num)
@@ -140,8 +146,14 @@ void ScalarConverter::convertToInt(const int &num)
 	else
 		printTypeConversion(CHAR, "Non displayable");
 	printTypeConversion(INT, std::to_string(num));
-	printTypeConversion(FLOAT, std::to_string(static_cast<float>(num)));
-	printTypeConversion(DOUBLE, std::to_string(static_cast<double>(num)));
+
+	std::ostringstream oss_f;
+	oss_f << static_cast<int>(num) << ".0f";
+	printTypeConversion(FLOAT, oss_f.str());
+
+	std::ostringstream oss_d;
+	oss_d << static_cast<int>(num) << ".0";
+	printTypeConversion(DOUBLE, oss_d.str());
 }
 
 void ScalarConverter::convertToFloat(const float &num)
