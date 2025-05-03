@@ -101,23 +101,47 @@ bool ScalarConverter::isDouble(const std::string &str)
 	return dotSeen && digitSeen;
 }
 
+void printTypeConversion(t_type type, const std::string &str)
+{
+	switch (type)
+	{
+		case CHAR:
+			std::cout << "char: '" << str << "'" << std::endl;
+			break;
+		case INT:
+			std::cout << "int: " << str << std::endl;
+			break;
+		case FLOAT:
+			std::cout << "float: " << str << ".0f" << std::endl;
+			break;
+		case DOUBLE:
+			std::cout << "double: " << str << ".0" << std::endl;
+			break;
+		default:
+			std::cerr << "Unknown type" << std::endl;
+	}
+}
+
 void ScalarConverter::convertToChar(const char &c)
 {
-	std::cout << "char: '" << c << "'" << std::endl;
-	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << "float: " << static_cast<float>(c) << ".0f" <<std::endl;
-	std::cout << "double: " << static_cast<double>(c) << ".0" <<std::endl;
+	if (isprint(c))
+		printTypeConversion(CHAR, std::string(1, c));
+	else
+		printTypeConversion(CHAR, "Non displayable");
+	printTypeConversion(INT, std::to_string(static_cast<int>(c)));
+	printTypeConversion(FLOAT, std::to_string(static_cast<float>(c)));
+	printTypeConversion(DOUBLE, std::to_string(static_cast<double>(c)));
 }
 
 void ScalarConverter::convertToInt(const int &num)
 {
 	if (std::isprint(num))
-		std::cout << "char: '" << static_cast<char>(num) << "'" << std::endl;
+		printTypeConversion(CHAR, std::string(1, static_cast<char>(num)));
 	else
-		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: " << num << std::endl;
-	std::cout << "float: " << static_cast<float>(num) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(num) << ".0" << std::endl;
+		printTypeConversion(CHAR, "Non displayable");
+	printTypeConversion(INT, std::to_string(num));
+	printTypeConversion(FLOAT, std::to_string(static_cast<float>(num)));
+	printTypeConversion(DOUBLE, std::to_string(static_cast<double>(num)));
 }
 
 void ScalarConverter::convertToFloat(const float &num)
