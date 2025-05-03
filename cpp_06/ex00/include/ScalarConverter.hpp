@@ -3,6 +3,7 @@
 # include <iostream>
 # include <string>
 # include <cmath>
+#include <sstream>
 
 typedef enum e_type
 {

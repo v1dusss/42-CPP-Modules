@@ -106,7 +106,10 @@ void printTypeConversion(t_type type, const std::string &str)
 	switch (type)
 	{
 		case CHAR:
-			std::cout << "char: '" << str << "'" << std::endl;
+			if (str == "impossible" ||str == "Non displayable")
+				std::cout << "char: " << str << std::endl;
+			else
+				std::cout << "char: '" << str << "'" << std::endl;
 			break;
 		case INT:
 			std::cout << "int: " << str << std::endl;
@@ -158,12 +161,60 @@ void ScalarConverter::convertToInt(const int &num)
 
 void ScalarConverter::convertToFloat(const float &num)
 {
-	(void)num;
+	if (std::isnan(num) || std::isinf(num))
+		printTypeConversion(CHAR, "impossible");
+	else if (std::isprint(static_cast<int>(num)))
+		printTypeConversion(CHAR, std::string(1, static_cast<char>(num)));
+	else
+		printTypeConversion(CHAR, "Non displayable");
+	
+	if (std::isnan(num) || std::isinf(num))
+		printTypeConversion(INT, "impossible");
+	else
+		printTypeConversion(INT, std::to_string(static_cast<int>(num)));
+
+	std::ostringstream oss_f;
+	if (num - static_cast<int>(num) == 0 && num < INT_MAX && num > INT_MIN)
+		oss_f << static_cast<int>(num) << ".0f";
+	else
+		oss_f << num << "f";
+	printTypeConversion(FLOAT, oss_f.str());
+
+	std::ostringstream oss_d;
+	if (num - static_cast<int>(num) == 0)
+		oss_d << static_cast<int>(num) << ".0";
+	else
+		oss_d << num;
+	printTypeConversion(DOUBLE, oss_d.str());
 }
 
 void ScalarConverter::convertToDouble(const double &num)
 {
-	(void)num;
+	if (std::isnan(num) || std::isinf(num))
+		printTypeConversion(CHAR, "impossible");
+	else if (std::isprint(static_cast<int>(num)))
+		printTypeConversion(CHAR, std::string(1, static_cast<char>(num)));
+	else
+		printTypeConversion(CHAR, "Non displayable");
+
+	if (std::isnan(num) || std::isinf(num))
+		printTypeConversion(INT, "impossible");
+	else
+		printTypeConversion(INT, std::to_string(static_cast<int>(num)));
+
+	std::ostringstream oss_f;
+	if (num - static_cast<int>(num) == 0 && num < INT_MAX && num > INT_MIN)
+		oss_f << static_cast<int>(num) << ".0f";
+	else
+		oss_f << num << "f";
+	printTypeConversion(FLOAT, oss_f.str());
+
+	std::ostringstream oss_d;
+	if (num - static_cast<int>(num) == 0)
+		oss_d << static_cast<int>(num) << ".0";
+	else
+		oss_d << num;
+	printTypeConversion(DOUBLE, oss_d.str());
 }
 
 const char* typeToString(t_type type) {
