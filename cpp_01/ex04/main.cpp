@@ -27,6 +27,7 @@ int main(int argc, char* argv[])
 	std::ofstream outfile(filename + ".replace");
 	if (!outfile) {
 		std::cerr << "\033[31m" << "Error creating file" << "\033[0m" << std::endl;
+		infile.close();
 		return 1;
 	}
 
