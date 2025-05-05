@@ -144,18 +144,20 @@ void ScalarConverter::convertToChar(const char &c)
 
 void ScalarConverter::convertToInt(const int &num)
 {
-	if (std::isprint(num))
+	if (num < INT_MIN || num > INT_MAX)
+		printTypeConversion(CHAR, "impossible");
+	else if (std::isprint(static_cast<int>(num)))
 		printTypeConversion(CHAR, std::string(1, static_cast<char>(num)));
 	else
 		printTypeConversion(CHAR, "Non displayable");
 	printTypeConversion(INT, std::to_string(num));
 
 	std::ostringstream oss_f;
-	oss_f << static_cast<int>(num) << ".0f";
+	oss_f << static_cast<float>(num) << ".0f";
 	printTypeConversion(FLOAT, oss_f.str());
 
 	std::ostringstream oss_d;
-	oss_d << static_cast<int>(num) << ".0";
+	oss_d << static_cast<double>(num) << ".0";
 	printTypeConversion(DOUBLE, oss_d.str());
 }
 
@@ -174,17 +176,15 @@ void ScalarConverter::convertToFloat(const float &num)
 		printTypeConversion(INT, std::to_string(static_cast<int>(num)));
 
 	std::ostringstream oss_f;
-	if (num - static_cast<int>(num) == 0 && num < INT_MAX && num > INT_MIN)
-		oss_f << static_cast<int>(num) << ".0f";
-	else
-		oss_f << num << "f";
+	oss_f.setf(std::ios::fixed);
+	oss_f.precision(1);
+	oss_f << num << "f";
 	printTypeConversion(FLOAT, oss_f.str());
 
 	std::ostringstream oss_d;
-	if (num - static_cast<int>(num) == 0)
-		oss_d << static_cast<int>(num) << ".0";
-	else
-		oss_d << num;
+	oss_d.setf(std::ios::fixed);
+	oss_d.precision(1);
+	oss_d << static_cast<double>(num);
 	printTypeConversion(DOUBLE, oss_d.str());
 }
 
@@ -203,17 +203,15 @@ void ScalarConverter::convertToDouble(const double &num)
 		printTypeConversion(INT, std::to_string(static_cast<int>(num)));
 
 	std::ostringstream oss_f;
-	if (num - static_cast<int>(num) == 0 && num < INT_MAX && num > INT_MIN)
-		oss_f << static_cast<int>(num) << ".0f";
-	else
-		oss_f << num << "f";
+	oss_f.setf(std::ios::fixed);
+	oss_f.precision(1);
+	oss_f << static_cast<float>(num) << "f";
 	printTypeConversion(FLOAT, oss_f.str());
 
 	std::ostringstream oss_d;
-	if (num - static_cast<int>(num) == 0)
-		oss_d << static_cast<int>(num) << ".0";
-	else
-		oss_d << num;
+	oss_d.setf(std::ios::fixed);
+	oss_d.precision(1);
+	oss_d << num;
 	printTypeConversion(DOUBLE, oss_d.str());
 }
 
@@ -231,7 +229,7 @@ void ScalarConverter::convert(const std::string &str)
 {
 	t_type type;
 
-	if (!str.empty())
+	if (!str.empty() && str != "\n")
 	{
 		if (isInt(str))
 			type = INT;
@@ -251,9 +249,9 @@ void ScalarConverter::convert(const std::string &str)
 		return;
 	}
 
-	std::cout << "Input: " << str << std::endl;
-	std::cout << "Type: " << typeToString(type) << std::endl;
-	std::cout << std::endl;
+	//std::cout << "Input: " << str << std::endl;
+	//std::cout << "Type: " << typeToString(type) << std::endl;
+	//std::cout << std::endl;
 
 	switch (type)
 	{
