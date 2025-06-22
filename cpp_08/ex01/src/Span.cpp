@@ -1,9 +1,10 @@
 #include "Span.hpp"
+#include <limits.h>
 
 
 Span::Span(unsigned int n) : _maxSize(n) {}
 
-Span::Span(const Span& other) : _array(other._array), _maxSize(other._maxSize) {}
+Span::Span(const Span& other) :_maxSize(other._maxSize), _array(other._array) {}
 
 Span& Span::operator=(const Span& other) {
     if (this != &other) {
@@ -24,7 +25,7 @@ int Span::shortSpan() const {
     if (_array.size() < 2) {
         throw std::logic_error( RED "Not enough elements to find a short span" RESET );
     }
-    std::vector<int> sortedArray = _array;
+    std::deque<int> sortedArray = _array;
     std::sort(sortedArray.begin(), sortedArray.end());
     int minSpan = INT_MAX;
     for (size_t i = 1; i < sortedArray.size(); ++i) {

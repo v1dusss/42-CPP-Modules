@@ -2,7 +2,7 @@
 
 #include <algorithm>
 #include <stdexcept>
-#include <array>
+#include <deque>
 
 #define RESET       "\033[0m"
 #define BLACK       "\033[30m"
@@ -18,7 +18,7 @@ class Span {
     private:
         Span() = delete;
         unsigned int _maxSize;
-        std::array<int, _maxSize> _array;
+        std::deque<int> _array;
 
     public:
         Span(unsigned int n);
