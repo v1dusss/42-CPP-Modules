@@ -107,18 +107,18 @@ void printTypeConversion(t_type type, const std::string &str)
 	{
 		case CHAR:
 			if (str == "impossible" ||str == "Non displayable")
-				std::cout << "char: " << str << std::endl;
+				std::cout << "char: " << BOLD << str << RESET <<std::endl;
 			else
-				std::cout << "char: '" << str << "'" << std::endl;
+				std::cout << "char: '" << BOLD << str << RESET <<"'" << std::endl;
 			break;
 		case INT:
-			std::cout << "int: " << str << std::endl;
+			std::cout << "int: " << BOLD << str << RESET <<std::endl;
 			break;
 		case FLOAT:
-			std::cout << "float: " << str << std::endl;
+			std::cout << "float: " << BOLD << str << RESET <<std::endl;
 			break;
 		case DOUBLE:
-			std::cout << "double: " << str << std::endl;
+			std::cout << "double: " << BOLD << str << RESET <<std::endl;
 			break;
 		default:
 			std::cerr << "Unknown type" << std::endl;
@@ -169,7 +169,7 @@ void ScalarConverter::convertToFloat(const float &num)
 		printTypeConversion(CHAR, std::string(1, static_cast<char>(num)));
 	else
 		printTypeConversion(CHAR, "Non displayable");
-	
+
 	if (std::isnan(num) || std::isinf(num))
 		printTypeConversion(INT, "impossible");
 	else
@@ -240,18 +240,18 @@ void ScalarConverter::convert(const std::string &str)
 		else if (isDouble(str))
 			type = DOUBLE;
 		else{
-			std::cerr << "Invalid type" << std::endl;
+			std::cerr << BOLD RED << "Invalid type" << RESET << std::endl;
 			return;
 		}
 	}
 	else{
-		std::cerr << "Empty string" << std::endl;
+		std::cerr << BOLD RED << "Empty string" << RESET << std::endl;
 		return;
 	}
 
-	//std::cout << "Input: " << str << std::endl;
-	//std::cout << "Type: " << typeToString(type) << std::endl;
-	//std::cout << std::endl;
+	// std::cout << "Input: " << str << std::endl;
+	// std::cout << "Type: " << typeToString(type) << std::endl;
+	// std::cout << std::endl;
 
 	switch (type)
 	{

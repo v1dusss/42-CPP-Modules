@@ -3,7 +3,7 @@
 int main(int argc, char **argv)
 {
 	if (argc != 2){
-		std::cerr << "Usage: " << argv[0] << " <value>" << std::endl;
+		std::cerr << BOLD YELLOW << "Usage: " << argv[0] << " <value>" << RESET << std::endl;
 		return 1;
 	}
 
