@@ -5,10 +5,19 @@
 #include <sstream>
 #include <string>
 #include <map>
+#include <stdexcept>
+#include <algorithm>
+
+#include <chrono>
+#include <iomanip>
 
 class BitcoinExchange {
 private:
     std::map<std::string, double> _exchangeRates;
+
+    bool isValidDate(const std::string& dateStr) const;
+    bool isValidPrice(double price) const;
+    std::string findClosestDate(const std::string& targetDate) const;
 
 public:
     BitcoinExchange();
@@ -16,6 +25,10 @@ public:
     BitcoinExchange &operator=(const BitcoinExchange &other);
     ~BitcoinExchange();
 
+    bool loadExchangeRates(const std::string &filename);
+    double getExchangeRate(const std::string &date) const;
+    double calculateValue(const std::string &date, double amount) const;
+    void processInput(const std::string &filename) const;
 };
 
 #define RESET       "\033[0m"
