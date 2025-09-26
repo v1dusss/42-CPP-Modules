@@ -22,7 +22,6 @@ bool BitcoinExchange::isValidDate(const std::string& dateStr) const {
         int month = std::stoi(dateStr.substr(5, 2));
         int day = std::stoi(dateStr.substr(8, 2));
 
-        if (year < 2009 || year > 10000) return false;
         if (month < 1 || month > 12) return false;
         if (day < 1 || day > 31) return false;
 
@@ -35,6 +34,8 @@ bool BitcoinExchange::isValidDate(const std::string& dateStr) const {
         }
 
         if (day > daysInMonth[month - 1]) return false;
+
+        if (year <= 2009 && month == 1 && day < 3) return false; // Bitcoin genesis block was mined on 2009-01-03
 
         return true;
     } catch (...) {
