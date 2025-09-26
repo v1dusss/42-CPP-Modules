@@ -42,6 +42,27 @@ bool BitcoinExchange::isValidDate(const std::string& dateStr) const {
     }
 }
 
+bool BitcoinExchange::isValidPrice(double price) const {
+    if (price < 0) {
+        return false;
+    }
+    return true;
+}
+
+std::string BitcoinExchange::findClosestDate(const std::string& targetDate) const {
+    std::string closestDate = "";
+
+    for (const auto& pair : _exchangeRates) {
+        if (pair.first <= targetDate) {
+            if (closestDate.empty() || pair.first > closestDate) {
+                closestDate = pair.first;
+            }
+        }
+    }
+
+    return closestDate;
+}
+
 bool BitcoinExchange::loadExchangeRates(const std::string &filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -85,4 +106,80 @@ bool BitcoinExchange::loadExchangeRates(const std::string &filename) {
 
     file.close();
     return !_exchangeRates.empty();
+}
+
+double BitcoinExchange::getExchangeRate(const std::string &date) const {
+    auto it = _exchangeRates.find(date);
+    if (it != _exchangeRates.end()) {
+        return it->second;
+    }
+
+    // Find closest earlier date
+    std::string closestDate = findClosestDate(date);
+    if (closestDate.empty()) {
+        throw std::runtime_error("No earlier date found in database");
+    }
+
+    return _exchangeRates.at(closestDate);
+}
+
+double BitcoinExchange::calculateValue(const std::string &date, double amount) const {
+    if (!isValidDate(date)) {
+        throw std::runtime_error("bad input => " + date);
+    }
+
+    if (!isValidPrice(amount)) {
+        if (amount < 0) {
+            throw std::runtime_error("not a positive number.");
+        } else {
+            throw std::runtime_error("too large a number.");
+        }
+    }
+
+    double rate = getExchangeRate(date);
+    return amount * rate;
+}
+
+void BitcoinExchange::processInput(const std::string &filename) const {
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error: could not open file." << std::endl;
+        return;
+    }
+
+    std::string line;
+    bool firstLine = true;
+
+    while (std::getline(file, line)) {
+        // Skip header line
+        if (firstLine) {
+            firstLine = false;
+            continue;
+        }
+
+        // Find the pipe separator
+        size_t pipePos = line.find(" | ");
+        if (pipePos == std::string::npos) {
+            std::cerr << "Error: bad input => " << line << std::endl;
+            continue;
+        }
+
+        std::string date = line.substr(0, pipePos);
+        std::string valueStr = line.substr(pipePos + 3);
+
+        try {
+            double value = std::stod(valueStr);
+            if (value < 0) {
+                throw std::runtime_error("negative value => " + std::to_string(value));
+            } else if (value > 1000) {
+                throw std::runtime_error("too large a number => " + std::to_string(value));
+            }
+            double result = calculateValue(date, value);
+            std::cout << date << " => " << value << " = " << result << std::endl;
+        } catch (const std::exception& e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+        }
+    }
+
+    file.close();
 }
