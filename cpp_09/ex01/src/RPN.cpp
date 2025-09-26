@@ -22,7 +22,7 @@ RPN& RPN::operator=(const RPN& other)
 
 int RPN::calculate_RPN(std::string str)
 {
-	for (int i = 0; i < str.length(); i++)
+	for (size_t i = 0; i < str.length(); i++)
 	{
 		if (str[i] == ' ')
 			continue;
@@ -48,6 +48,8 @@ int RPN::calculate_RPN(std::string str)
 					buffer.push(a * b);
 					break;
 				case '/':
+					if (b == 0)
+						throw std::runtime_error("Error: Division by zero");
 					buffer.push(a / b);
 					break;
 				default:
